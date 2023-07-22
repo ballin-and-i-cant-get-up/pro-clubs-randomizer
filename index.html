@@ -95,8 +95,15 @@ let formationsDict = {
 };
 
 function generateTable(playerArr, positionArr) {
+  var prevTable = document.getElementById("positions-table");
+  // remove previous table if it exists
+  if (prevTable != null) {
+    var tableParent = prevTable.parentElement;
+    tableParent.removeChild(prevTable);
+  }
   // creates a <table> element and a <tbody> element
   const tbl = document.createElement("table");
+  tbl.id = "positions-table"
   const tblBody = document.createElement("tbody");
 
   // creating all cells
@@ -139,8 +146,8 @@ function randomize() {
 
 	for (var i = 0; i<players.length; i++){
 		var positionIndex = Math.floor(Math.random()*positions.length)
-  	var position = positions.splice(positionIndex,1);
-  	playerPositions.push(position);
+  		var position = positions.splice(positionIndex,1);
+	  	playerPositions.push(position);
 	}
   
   document.getElementById("Players").innerHTML = "";
